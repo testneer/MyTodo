@@ -1,4 +1,4 @@
-package com.og.data;
+package com.og.todo.data;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getTargetContext();
 
-        assertEquals("com.og.data.test", appContext.getPackageName());
+        assertEquals("com.og.todo.data.test", appContext.getPackageName());
     }
 }

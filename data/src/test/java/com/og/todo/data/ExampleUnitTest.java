@@ -1,4 +1,4 @@
-package com.og.data;
+package com.og.todo.data;
 
 import org.junit.Test;
 
