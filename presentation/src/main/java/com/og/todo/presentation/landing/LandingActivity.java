@@ -11,11 +11,11 @@ import android.widget.Button;
 
 import com.og.todo.presentation.R;
 
-public class ToDoListActivity extends AppCompatActivity implements TodoListPresenter.View{
-    private TodoListPresenter mPresenter;
+public class LandingActivity extends AppCompatActivity implements LandingPresenter.View{
+    private LandingPresenter mPresenter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        mPresenter = new TodoListPresenterImpl(this);
+        mPresenter = new LandingPresenterImpl(this);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_to_do_list);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);

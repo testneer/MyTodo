@@ -5,10 +5,10 @@ package com.og.todo.presentation.landing;
  * Created by orenegauthier on 08/08/2017.
  */
 
- class TodoListPresenterImpl implements TodoListPresenter {
-    private TodoListPresenter.View view;
+ class LandingPresenterImpl implements LandingPresenter {
+    private LandingPresenter.View view;
 
-    public TodoListPresenterImpl(View view){
+    public LandingPresenterImpl(View view){
         this.view = view;
     }
 

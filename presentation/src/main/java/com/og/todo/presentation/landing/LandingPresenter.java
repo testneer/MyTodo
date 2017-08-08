@@ -5,7 +5,7 @@ import android.content.Context;
 /**
  * Created by orenegauthier on 07/08/2017.
  */
- interface TodoListPresenter {
+ interface LandingPresenter {
     void onStart();
 
      interface View{
