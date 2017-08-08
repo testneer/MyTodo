@@ -1,4 +1,4 @@
-package com.example.orenegauthier.mynotepad;
+package com.og.todo.presentation.landing;
 
 import org.junit.Test;
 

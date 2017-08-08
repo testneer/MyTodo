@@ -1,4 +1,4 @@
-package com.example.orenegauthier.mynotepad;
+package com.og.todo.presentation.landing;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;

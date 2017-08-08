@@ -1,7 +1,6 @@
-package com.example.orenegauthier.mynotepad.landing;
+package com.og.todo.presentation.landing;
 
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -10,8 +9,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
 
-import com.example.orenegauthier.mynotepad.R;
-import com.example.orenegauthier.mynotepad.presenter.*;
+import com.og.todo.presentation.R;
 
 public class ToDoListActivity extends AppCompatActivity implements TodoListPresenter.View{
     private TodoListPresenter mPresenter;

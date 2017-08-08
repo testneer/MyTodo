@@ -1,15 +1,11 @@
-package com.example.orenegauthier.mynotepad.presenter;
-
-import android.content.Context;
-import android.content.Intent;
-import android.support.design.widget.Snackbar;
+package com.og.todo.presentation.landing;
 
 /**
  * the presenter implementation
  * Created by orenegauthier on 08/08/2017.
  */
 
-public class TodoListPresenterImpl implements TodoListPresenter {
+ class TodoListPresenterImpl implements TodoListPresenter {
     private TodoListPresenter.View view;
 
     public TodoListPresenterImpl(View view){
