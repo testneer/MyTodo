@@ -12,7 +12,7 @@ import com.og.todo.presentation.R;
 
 
 /**
- * A placeholder fragment containing a simple view.
+ * A placeholder fragment containing a simple view..
  */
 public class TodoListFragment extends Fragment {
 
@@ -29,7 +29,6 @@ public class TodoListFragment extends Fragment {
 
     private void setupRecyclerView(View parent) {
         mRv = (RecyclerView) parent.findViewById(R.id.rv_items);
-
         mRv.setHasFixedSize(true);
         // use a linear layout manager
         mLayoutManager = new LinearLayoutManager(getContext());

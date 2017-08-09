@@ -1,5 +1,6 @@
 package com.og.todo.presentation.todolist;
 
+import android.annotation.SuppressLint;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
@@ -8,6 +9,7 @@ import android.widget.TextView;
 import com.og.todo.presentation.R;
 
 /**
+ *
  * Created by orenegauthier on 09/08/2017.
  */
 
@@ -26,19 +28,20 @@ class TodoListAdapter extends RecyclerView.Adapter<TodoListAdapter.ViewHolder> {
                                 "12 Banana", "Orange", "Cherry", "Apple", "Pineapple", "Melon", "Plum",
                                 "13 Banana", "Orange", "Cherry", "Apple", "Pineapple", "Melon", "Plum",
                                 "14 Banana", "Orange", "Cherry", "Apple", "Pineapple", "Melon", "Plum",
-                                "15 Banana", "Orange", "Cherry", "Apple", "Pineapple", "Melon", "Plum" };;
+                                "15 Banana", "Orange", "Cherry", "Apple", "Pineapple", "Melon", "Plum" };
 
     static class ViewHolder extends RecyclerView.ViewHolder{
         private TextView mTextView;
-    public ViewHolder(TextView tv) {
-        super(tv);
-        mTextView = tv;
+
+        ViewHolder(TextView tv) {
+            super(tv);
+            mTextView = tv;
+        }
     }
-}
 
     @Override
     public TodoListAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        TextView tv = (TextView) LayoutInflater.from(parent.getContext()).inflate(R.layout.todo_list_item,null);
+        TextView tv = (TextView) LayoutInflater.from(parent.getContext()).inflate(R.layout.view_todo_list_item,null);
         return new ViewHolder(tv);
     }
 
