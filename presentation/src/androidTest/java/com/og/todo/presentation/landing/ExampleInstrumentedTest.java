@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getTargetContext();
 
-        assertEquals("com.example.orenegauthier.mynotepad", appContext.getPackageName());
+        assertEquals("com.og.todo.presentation.landing_activity_content", appContext.getPackageName());
     }
 }

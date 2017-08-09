@@ -15,26 +15,17 @@ public class LandingActivity extends AppCompatActivity implements LandingPresent
     private LandingPresenter mPresenter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        mPresenter = new LandingPresenterImpl(this);
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_to_do_list);
+        mPresenter = new LandingPresenterImpl(this);
+        setContentView(R.layout.landing_activity);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
-//        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-//        fab.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-//                        .setAction("Action", null).show();
-//            }
-//        });
 
         Button startApp = (Button) findViewById(R.id.button_start);
         startApp.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view){
-                mPresenter.onStart();
+                mPresenter.onStart(LandingActivity.this);
             }
         });
     }
