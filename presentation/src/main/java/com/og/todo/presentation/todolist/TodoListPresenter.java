@@ -10,6 +10,7 @@ interface TodoListPresenter {
     void onDeleteItem();
     void onAddItem();
     void onRefresh();
+    void loadData();
 
     interface View{
 
