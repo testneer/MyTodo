@@ -13,11 +13,13 @@ import com.og.todo.domain.executor.Executor;
 import com.og.todo.domain.executor.MainThread;
 import com.og.todo.domain.executor.impl.ThreadExecutor;
 import com.og.todo.domain.interactors.GetItemsUseCase;
+import com.og.todo.domain.repository.TodoRepository;
 import com.og.todo.presentation.MainThreadImpl;
 import com.og.todo.presentation.R;
-import com.og.todo.presentation.model.TodoItemModel;
+import com.og.todo.domain.model.TodoItemModel;
 
 import java.util.Collection;
+import java.util.List;
 
 
 /**
@@ -35,7 +37,7 @@ public class TodoListFragment extends Fragment implements TodoListPresenter.View
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View fragmentLayout = inflater.inflate(R.layout.fragment_todo_list, container, false);
         setupRecyclerView(fragmentLayout);
-        GetItemsUseCase useCase = new GetItemsUseCase(ThreadExecutor.getInstance(), MainThreadImpl.getInstance());
+        GetItemsUseCase useCase = new GetItemsUseCase(ThreadExecutor.getInstance(), MainThreadImpl.getInstance(), TodoRepository.getInstance());
         mPresenter = new TodoListPresenterImpl(this, useCase);
         return fragmentLayout;
     }
@@ -57,7 +59,7 @@ public class TodoListFragment extends Fragment implements TodoListPresenter.View
     }
 
     @Override
-    public void onDataLoaded(Collection<TodoItemModel> model) {
+    public void onDataLoaded(List<TodoItemModel> model) {
         mAdapter.setNewData(model);
     }
 }

@@ -1,8 +1,10 @@
 package com.og.todo.presentation.todolist;
 
-import com.og.todo.presentation.model.TodoItemModel;
+
+import com.og.todo.domain.model.TodoItemModel;
 
 import java.util.Collection;
+import java.util.List;
 
 /**
  * presented
@@ -18,7 +20,7 @@ interface TodoListPresenter {
 
     interface View{
 
-        void onDataLoaded(Collection<TodoItemModel> model);
+        void onDataLoaded(List<TodoItemModel> model);
 
     }
 }

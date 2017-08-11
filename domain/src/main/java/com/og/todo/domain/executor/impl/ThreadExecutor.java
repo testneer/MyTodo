@@ -1,10 +1,17 @@
 package com.og.todo.domain.executor.impl;
 
 
+import android.util.Log;
+
 import com.og.todo.domain.executor.Executor;
 import com.og.todo.domain.interactors.base.AbstractInteractor;
 
+import java.io.PrintWriter;
+import java.io.StringWriter;
 import java.util.concurrent.BlockingQueue;
+import java.util.concurrent.CancellationException;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.Future;
 import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
@@ -27,12 +34,13 @@ public class ThreadExecutor implements Executor {
     private ThreadPoolExecutor mThreadPoolExecutor;
 
     private ThreadExecutor() {
-        mThreadPoolExecutor = new ThreadPoolExecutor(
+        mThreadPoolExecutor = new ExtendedExecutor(
                 CORE_POOL_SIZE,
                 MAX_POOL_SIZE,
                 KEEP_ALIVE_TIME,
                 TIME_UNIT,
                 WORK_QUEUE);
+
     }
 
     @Override
@@ -59,5 +67,37 @@ public class ThreadExecutor implements Executor {
         }
 
         return sThreadExecutor;
+    }
+
+    static class ExtendedExecutor extends ThreadPoolExecutor{
+
+        public ExtendedExecutor(int corePoolSize, int maximumPoolSize, long keepAliveTime, TimeUnit unit, BlockingQueue<Runnable> workQueue) {
+            super(corePoolSize, maximumPoolSize, keepAliveTime, unit, workQueue);
+        }
+
+        @Override
+        protected void afterExecute(Runnable r, Throwable t) {
+            super.afterExecute(r, t);
+            if (t == null
+                    && r instanceof Future<?>
+                    && ((Future<?>)r).isDone()) {
+                try {
+                    Object result = ((Future<?>) r).get();
+                } catch (CancellationException ce) {
+                    t = ce;
+                } catch (ExecutionException ee) {
+                    t = ee.getCause();
+                } catch (InterruptedException ie) {
+                    // ignore/reset
+                    Thread.currentThread().interrupt();
+                }
+            }
+            if(t != null){
+                StringWriter sw = new StringWriter();
+                PrintWriter pw = new PrintWriter(sw);
+                t.printStackTrace(pw);
+                Log.e("ORENOREN", sw.toString()); // stack trace as a string
+            }
+        }
     }
 }

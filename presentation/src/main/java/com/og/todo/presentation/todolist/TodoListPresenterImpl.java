@@ -1,20 +1,24 @@
 package com.og.todo.presentation.todolist;
 
 import com.og.todo.domain.interactors.GetItemsUseCase;
+import com.og.todo.domain.model.TodoItemModel;
 
-import java.util.logging.Logger;
+import java.util.List;
 
 /**
  *
  * Created by orenegauthier on 09/08/2017.
  */
 
-class TodoListPresenterImpl implements TodoListPresenter {
+class TodoListPresenterImpl implements TodoListPresenter, GetItemsUseCase.Callback{
 
     private TodoListPresenter.View mView;
+    private GetItemsUseCase mUseCase;
 
-    TodoListPresenterImpl(View mView, GetItemsUseCase getItems) {
+    TodoListPresenterImpl(View mView, GetItemsUseCase useCase) {
         this.mView = mView;
+        useCase.setCallback(this);
+        this.mUseCase = useCase;
     }
 
     @Override
@@ -34,6 +38,12 @@ class TodoListPresenterImpl implements TodoListPresenter {
 
     @Override
     public void loadData() {
-//        mView.onDataLoaded();
+        mUseCase.execute();
+    }
+
+    //callBack implementations
+    @Override
+    public void onDataLoaded(List<TodoItemModel> model) {
+        mView.onDataLoaded(model);
     }
 }
