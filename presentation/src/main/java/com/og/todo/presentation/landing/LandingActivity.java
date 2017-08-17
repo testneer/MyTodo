@@ -10,6 +10,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
 
+import com.og.todo.experiment.loader.LoaderActivity;
 import com.og.todo.presentation.R;
 
 public class LandingActivity extends AppCompatActivity implements LandingPresenter.View{
@@ -48,6 +49,7 @@ public class LandingActivity extends AppCompatActivity implements LandingPresent
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
+            startActivity(LoaderActivity.getIntent(this));
             return true;
         }
         return super.onOptionsItemSelected(item);
